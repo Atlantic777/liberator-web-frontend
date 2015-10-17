@@ -1,9 +1,13 @@
 .login-form {
   font-style: italic;
-  margin-top: 100px;
+  margin-top: 10rem;
 
   input {
-    padding: 15px 0;
+    padding: 1.5rem 0;
+  }
+
+  button {
+    transition: all 0.65s;
   }
 
   label {
@@ -17,9 +21,10 @@
   }
 
   input:focus + label,
+  input.ng-invalid-email + label,
   input:valid + label {
-    top: -10px;
-    font-size: 12px;
+    top: -1rem;
+    font-size: 1.2rem;
     color: #aaaaaa;
   }
 }

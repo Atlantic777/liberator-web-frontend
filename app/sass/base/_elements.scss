@@ -1,8 +1,11 @@
 html {
   font-family: $base-font-stack;
-  font-size: $inuit-base-font-size;
+  font-size: $inuit-base-font-size/1.6;
 }
 
+body {
+    font-size: 1.6rem;
+}
 
 a {
   text-decoration: none;
@@ -15,4 +18,17 @@ a {
 
 fieldset {
   border: 0;
+}
+
+button {
+  &[disabled] {
+    background-color: $disabled-background-color;
+    border-color: $disabled-border-color;
+    color: $disabled-color;
+    opacity: $disabled-opacity;
+    &:hover {
+      cursor: not-allowed;
+      color: $disabled-color;
+    }
+  }
 }
