@@ -7,6 +7,7 @@ require('./auth/app.js');
  */
 angular.module('Liberator', [
     require('angular-ui-router'),
+    require('angular-ui-bootstrap'),
     'Liberator.auth'
   ])
 

@@ -1,16 +1,18 @@
+<div class="container">
 <form
     novalidate
     ng-submit="login()"
     name="loginForm"
-    class="login-form o-container o-container--narrow u-8/10">
+    class="form-signin">
 
-  <fieldset class="layout">
-    <div class="layout__item u-4/10 u-1/1-palm palm-mb">
-      <div class="position--relative">
-        <input type="email" ng-model="user.email" name="email" class="u-1/1" required>
+  <fieldset>
+    <div>
+      <div>
+        <input type="email" ng-model="user.email" name="email" class="form-control" placeholder="admin@example.com"required>
         <label for="email">Email</label>
       </div>
-      <div class="error" ng-messages="loginForm.email.$touched && loginForm.email.$error" role="alert">
+
+      <div class="" ng-messages="loginForm.email.$touched && loginForm.email.$error" role="">
         <div ng-message="email">
           Please enter a valid email address
         </div>
@@ -18,22 +20,28 @@
           Email is required
         </div>
       </div>
-    </div><div class="layout__item u-4/10 u-1/1-palm palm-mb">
-      <div class="position--relative">
-        <input type="password" ng-model="user.password" name="password" class="u-1/1" required>
+    </div>
+
+    <div>
+      <div class="">
+        <input type="password" ng-model="user.password" name="password" class="form-control" placeholder="Sekrit" required>
         <label for="password">Password</label>
       </div>
-      <div class="error" ng-messages="loginForm.password.$touched && loginForm.password.$error" role="alert">
+      <div class="" ng-messages="loginForm.password.$touched && loginForm.password.$error" role="alert">
         <div ng-message="required">
           Password is required
         </div>
       </div>
-    </div><div class="layout__item u-2/10 u-1/1-palm">
-      <button name="loginButton" type="submit" class="btn u-1/1" ng-disabled="loginForm.$invalid || loginForm.$submitted">Login</button>
-    </div><div class="layout__item u-1/1 text--right u-mt+">
-      <a href="#" class="forgot-password">Forgot your password?</a>
+    </div>
+
+    <div class="">
+      <button name="loginButton" type="submit" class="btn btn-lrg btn-primary btn-block" ng-disabled="loginForm.$invalid || loginForm.$submitted">Login</button>
+    </div>
+    <div class="">
+      <a href="#" class="">Forgot your password?</a>
     </div>
   </fieldset>
 
   {{ user }}
 </form>
+</div>

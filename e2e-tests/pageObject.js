@@ -1,24 +1,29 @@
 'use strict';
 
-var angularHomepage = function() {
+var HomePage = function() {
   var greeting = element(by.binding('greeting'));
+  var menubar  = element(by.name('menubar'));
 
   this.get = function() {
-    browser.get('http://192.168.66.6:9000');
+    browser.get('/');
   };
 
   this.getGreeting = function() {
     return greeting.getText();
   };
+
+  this.getMenubar = function() {
+    return menubar;
+  };
 };
 
-var authPage = function() {
+var AuthPage = function() {
   var email    = element(by.name('email'));
   var password = element(by.name('password'));
   var button   = element(by.name('loginButton'));
 
   this.get = function() {
-    browser.get('http://192.168.66.6:9000/#/auth/login');
+    browser.get('/#/auth/login');
   };
 
   this.getEmail = function() {
@@ -49,9 +54,17 @@ var authPage = function() {
 
 };
 
+var NewArticlePage = function() {
+
+  this.get = function() {
+    browser.get("/#/new_article/")
+  }
+
+};
+
 describe('test redirect to auth', function() {
   it('should use a page object', function() {
-    var homepage = new angularHomepage();
+    var homepage = new HomePage();
 
     homepage.get();
     browser.getCurrentUrl().then(function(value) {
@@ -60,7 +73,7 @@ describe('test redirect to auth', function() {
   });
 
   it('should login successfully', function() {
-    var auth = new authPage();
+    var auth = new AuthPage();
     auth.get();
 
     auth.setEmail('admin@example.com');
@@ -80,14 +93,21 @@ describe('test redirect to auth', function() {
 
 describe('landing page', function() {
   beforeEach = function() {
-    var auth = new authPage();
+    var auth = new AuthPage();
     auth.login();
   };
 
   it('should show greeting', function() {
-    var home = new angularHomepage();
+    var home = new HomePage();
     home.get();
 
     expect(home.getGreeting()).toEqual("Hello from scope");
   })
+
+  it('should have menubar', function() {
+    var home = new HomePage();
+    home.get();
+
+    expect(home.getMenubar().isPresent()).toBe(true);
+  });
 });
