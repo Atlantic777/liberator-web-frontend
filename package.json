@@ -1,12 +1,12 @@
 {
   "name": "liberator-web-frontend",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Angularjs powered frontend for Liberator project <https://github.com/libreoss/liberator>",
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js",
     "start": "npm install && gulp",
-    "protractor" : "protractor e2e-tests/protractor.conf.js"
+    "protractor": "protractor e2e-tests/protractor.conf.js"
   },
   "repository": {
     "type": "git",
@@ -31,10 +31,10 @@
     "gulp-webserver": "~0.9.0",
     "vinyl-buffer": "~1.0.0",
     "vinyl-source-stream": "~1.0.0",
-    "jasmine-core" : "*",
-    "angular-ui-bootstrap" : "*",
-    "karma" : "*",
-    "karma-firefox-launcher" : "*",
-    "karma-jasmine" : "*"
+    "jasmine-core": "*",
+    "angular-ui-bootstrap": "*",
+    "karma": "*",
+    "karma-firefox-launcher": "*",
+    "karma-jasmine": "*"
   }
 }
