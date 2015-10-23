@@ -50,16 +50,33 @@ var AuthPage = function() {
     this.setEmail('admin@example.com');
     this.setPassword('Sekrit');
     this.clickLogin();
-  }
-
+  };
 };
 
 var NewArticlePage = function() {
+  var title = element(by.id('title'));
+  var authors = element(by.id('author'));
+  var button = element(by.id('submit'));
 
   this.get = function() {
-    browser.get("/#/new_article/")
-  }
+    browser.get("/#/new_article")
+  };
 
+  this.setTitle = function(new_title) {
+    title.sendKeys(new_title);
+  };
+
+  this.selectAuthors = function(author_arr) {
+    return;
+  };
+
+  this.getTitle = function() {
+    return title.getAttribute('value');
+  };
+
+  this.getAuthors = function() {
+    return [];
+  };
 };
 
 describe('test redirect to auth', function() {
@@ -109,5 +126,26 @@ describe('landing page', function() {
     home.get();
 
     expect(home.getMenubar().isPresent()).toBe(true);
+  });
+});
+
+describe('add new article', function() {
+  beforeEach = function() {
+    var auth = new AuthPage();
+    auth.login();
+  };
+
+  it('should have all elements', function() {
+    var newArticlePage = new NewArticlePage();
+    newArticlePage.get();
+
+    var title = "First article!"
+    var author = "John Doe";
+
+    newArticlePage.setTitle(title);
+    newArticlePage.selectAuthors([author]);
+
+    expect(newArticlePage.getTitle()).toEqual(title);
+    expect(newArticlePage.getAuthors()).toEqual([author]);
   });
 });
