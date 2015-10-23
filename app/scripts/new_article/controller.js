@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = [
     '$scope',
     '$http',
@@ -9,8 +7,9 @@ module.exports = [
     'API_URL',
 
     function newArticleController($scope, $http, articles, users, titles, API_URL) {
+        'use strict';
         users.getUsers().then( function(result) {
-            $scope.users = result["data"];
+            $scope.users = result;
         });
 
 
@@ -18,14 +17,14 @@ module.exports = [
             articles.createNewArticle(author)
             .then(function(result) {
 
-                $scope.article_result = result["data"];
+                $scope.article_result = result.data;
 
-                titles.newTitle(title, result["data"]["id"])
+                titles.newTitle(title, result.data.id)
                 .then(function(result) {
-                    $scope.title_result = result["data"];
+                    $scope.title_result = result.data;
                 }
                 );
             });
-        }
+        };
     }
 ];
